@@ -1,5 +1,6 @@
 import React from "react";
 import DisplayBody from '../display/display'
+import RenderNumbers from '../numbers/numbers'
 import styled from "styled-components";
 
 const CalcBody = styled.div`
@@ -15,7 +16,9 @@ const CalcBody = styled.div`
 function App() {
   return (
     <CalcBody>
-        <DisplayBody></DisplayBody>
+          <DisplayBody>
+          </DisplayBody>
+          <RenderNumbers></RenderNumbers>
     </CalcBody>
   );
 }
