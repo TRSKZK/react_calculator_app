@@ -1,21 +1,22 @@
 import React from "react";
-import "./App.css";
+import DisplayBody from '../display/display'
 import styled from "styled-components";
 
-const AppWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const CalcBody = styled.div`
+  padding: 10px;
   height: 100vh;
-`;
+  height: 400px;
+  width:300px;
+  background-color: #FEFEFE;
+  border: 2px solid black;
+
+`
 
 function App() {
   return (
-    <AppWrapper>
-      <div className="calc-container">
-        <h1>hello REct world</h1>
-      </div>
-    </AppWrapper>
+    <CalcBody>
+        <DisplayBody></DisplayBody>
+    </CalcBody>
   );
 }
 

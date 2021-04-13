@@ -3,10 +3,36 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/app-component/App';
 import reportWebVitals from './reportWebVitals';
+import styled, { createGlobalStyle } from 'styled-components';
+
+
+const GlobalStyle = createGlobalStyle`
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+  font-family: 'Inconsolata', monospace;
+  
+  
+}
+`
+const AppWrapp = styled.div`
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
+`
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <>
+      <GlobalStyle />
+      <AppWrapp>
+        <App />
+        </AppWrapp>
+      </>
+    
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
