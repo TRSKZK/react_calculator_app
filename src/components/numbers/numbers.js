@@ -93,11 +93,19 @@ console.log(data);
         <OperationBtnsContainer>
           <ClearBtn onClick={() => setData(data.substr(0, data.length - 1))}>⬅</ClearBtn>
           <ClearBtn onClick={() => setData("")}>Clear</ClearBtn>
-          <OperationBtns onClick={e => setData(data + e.target.value)} value="+">+</OperationBtns>
+          <OperationBtns onClick={e => setData(+data + e.target.value)} value="+">+</OperationBtns>
           <OperationBtns onClick={e => setData(data + e.target.value)} value="-">-</OperationBtns>
           <OperationBtns onClick={e => setData(data + e.target.value)} value="*">*</OperationBtns>
           <OperationBtns onClick={e => setData(data + e.target.value)} value="/">/</OperationBtns>
-          <OperationBtns onClick={e => console.log(data.split(''))} value="=">=</OperationBtns>
+          <OperationBtns onClick={e => data.split(` `).forEach(el => {
+            let num, res;
+            if (+el !== NaN) num = +el;
+            if (+el === NaN) return;
+            res = num `${el}`+ num;
+            return console.log(res);
+          })
+          
+          } value="=">=</OperationBtns>
         </OperationBtnsContainer>
         
         </MainContainer>
