@@ -1,5 +1,5 @@
 import React from "react";
-import DisplayBody from '../display/display'
+
 import RenderNumbers from '../numbers/numbers'
 import styled from "styled-components";
 import MathOperations from '../function-btns/function-btns'
@@ -17,8 +17,7 @@ const CalcBody = styled.div`
 function App() {
   return (
     <CalcBody>
-          <DisplayBody>
-          </DisplayBody>
+          
           <RenderNumbers></RenderNumbers>
           
     </CalcBody>

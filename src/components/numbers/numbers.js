@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Component from "react";
 import styled from "styled-components";
+
+const DisplayBody = styled.div`
+width: 100%;
+height: 40px;
+border: 1px solid #8C8C8C;
+font-size: 2rem;
+text-align: end;
+padding: 0 10px 0 10px;
+
+`
 
 const ButtonsContainer = styled.div`
   display: flex;
   margin-top: 20px;
-  gap:5px;
+  gap: 5px;
   flex-wrap: wrap;
-  width:170px
+  width: 170px;
 `;
 
 const ButtonNumber = styled.button`
@@ -18,40 +28,70 @@ const ButtonNumber = styled.button`
   font-size: 2rem;
   outline: none;
   cursor: pointer;
-  
-  flex-shrink:0;
+
+  flex-shrink: 0;
   flex-wrap: wrap;
 
-  &:focus{
-      
-   transform: ease(.98);
+  &:focus {
+    transform: ease(0.98);
   }
   &:hover {
     color: red;
   }
 `;
 
-const FuncBtns = styled(ButtonNumber)`
-color: red;
-
+const MainContainer = styled.div`
+display:grid;
+grid-template-columns: 3fr 1fr;
 `
 
+const OperationBtnsContainer = styled(ButtonsContainer)`
+display:flex;
+flex-direction:column;
+width:70px;
+
+`
+const ClearBtn = styled(ButtonNumber)`
+  color: #fffff;
+  background-color: tomato;
+  text-tarnsform:uppercase;
+  font-size: 1rem;
+  &:hover{
+    color:white;
+  }
+`;
+
 function RenderNumbers() {
-  const numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const [data, setData] = useState("");
+  const calcBtns = [];
+  [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, `,`, `%`].forEach((btn) => {
+    calcBtns.push(
+    <ButtonNumber
+      onClick={(e) => {
+        setData(data + e.target.value);
+      }}
+      value={btn}
+      key={btn}
+    >
+      {" "}
+      {btn}
+      </ButtonNumber>)
+      
+  });
+console.log(data);
   return (
-    <ButtonsContainer>
-          <ButtonNumber>7</ButtonNumber>
-          <ButtonNumber>8</ButtonNumber>
-          <ButtonNumber>9</ButtonNumber>
-          <ButtonNumber>4</ButtonNumber>
-          <ButtonNumber>5</ButtonNumber>
-          <ButtonNumber>6</ButtonNumber>
-          <ButtonNumber>1</ButtonNumber>
-          <ButtonNumber>2</ButtonNumber>
-          <ButtonNumber>3</ButtonNumber>
-          <ButtonNumber>0</ButtonNumber>
-    </ButtonsContainer>
-  );
+    <>
+      <DisplayBody>{data}</DisplayBody>
+      <MainContainer>
+        <ButtonsContainer>{calcBtns}</ButtonsContainer>
+        <OperationBtnsContainer>
+          <ClearBtn onClick={() => setData(data.substr(0, data.length - 1))}>⬅</ClearBtn>
+          <ClearBtn onClick={()=> setData("")}>Clear</ClearBtn>
+        </OperationBtnsContainer>
+        
+        </MainContainer>
+    </>
+  )
 }
 
 export default RenderNumbers;
