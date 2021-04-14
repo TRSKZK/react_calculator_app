@@ -46,9 +46,10 @@ grid-template-columns: 3fr 1fr;
 `
 
 const OperationBtnsContainer = styled(ButtonsContainer)`
-display:flex;
-flex-direction:column;
-width:70px;
+display:grid;
+grid-template-columns: repeat(2, 1fr);
+
+width:100px;
 
 `
 const ClearBtn = styled(ButtonNumber)`
@@ -60,6 +61,11 @@ const ClearBtn = styled(ButtonNumber)`
     color:white;
   }
 `;
+const OperationBtns = styled(ButtonNumber)`
+
+
+`
+
 
 function RenderNumbers() {
   const [data, setData] = useState("");
@@ -86,7 +92,12 @@ console.log(data);
         <ButtonsContainer>{calcBtns}</ButtonsContainer>
         <OperationBtnsContainer>
           <ClearBtn onClick={() => setData(data.substr(0, data.length - 1))}>⬅</ClearBtn>
-          <ClearBtn onClick={()=> setData("")}>Clear</ClearBtn>
+          <ClearBtn onClick={() => setData("")}>Clear</ClearBtn>
+          <OperationBtns onClick={e => setData(data + e.target.value)} value="+">+</OperationBtns>
+          <OperationBtns onClick={e => setData(data + e.target.value)} value="-">-</OperationBtns>
+          <OperationBtns onClick={e => setData(data + e.target.value)} value="*">*</OperationBtns>
+          <OperationBtns onClick={e => setData(data + e.target.value)} value="/">/</OperationBtns>
+          <OperationBtns onClick={e => console.log(data.split(''))} value="=">=</OperationBtns>
         </OperationBtnsContainer>
         
         </MainContainer>
