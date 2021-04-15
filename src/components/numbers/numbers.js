@@ -97,13 +97,13 @@ console.log(data);
           <OperationBtns onClick={e => setData(data + e.target.value)} value="-">-</OperationBtns>
           <OperationBtns onClick={e => setData(data + e.target.value)} value="*">*</OperationBtns>
           <OperationBtns onClick={e => setData(data + e.target.value)} value="/">/</OperationBtns>
-          <OperationBtns onClick={e => data.split(` `).forEach(el => {
-            let num, res;
-            if (+el !== NaN) num = +el;
-            if (+el === NaN) return;
-            res = num `${el}`+ num;
-            return console.log(res);
-          })
+          <OperationBtns onClick={e => {
+            setData(
+              String(eval(data))
+              
+              )
+
+          }
           
           } value="=">=</OperationBtns>
         </OperationBtnsContainer>
