@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Component from "react";
 import styled from "styled-components";
+import { evaluate } from 'mathjs';
 
 const DisplayBody = styled.div`
 width: 100%;
@@ -65,12 +66,6 @@ const OperationBtns = styled(ButtonNumber)`
 
 
 `
-function handleEqualSign(func, data) {
-  return func(
-    String(eval(data))
-    )
-  
-};
 
 function RenderNumbers() {
   const [data, setData] = useState("");
@@ -103,7 +98,7 @@ console.log(data);
           <OperationBtns onClick={e => setData(data + e.target.value)} value="*">*</OperationBtns>
           <OperationBtns onClick={e => setData(data + e.target.value)} value="/">/</OperationBtns>
           <OperationBtns onClick={() => {
-            handleEqualSign(setData, data)
+            setData(evaluate(data.slice(``)) )
           }
           
           } value="=">=</OperationBtns>
