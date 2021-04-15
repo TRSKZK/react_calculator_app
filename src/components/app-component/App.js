@@ -2,7 +2,7 @@ import React from "react";
 
 import RenderNumbers from '../numbers/numbers'
 import styled from "styled-components";
-import MathOperations from '../function-btns/function-btns'
+
 
 const CalcBody = styled.div`
   padding: 10px;
