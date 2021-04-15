@@ -65,7 +65,12 @@ const OperationBtns = styled(ButtonNumber)`
 
 
 `
-
+function handleEqualSign(func, data) {
+  return func(
+    String(eval(data))
+    )
+  
+};
 
 function RenderNumbers() {
   const [data, setData] = useState("");
@@ -97,12 +102,8 @@ console.log(data);
           <OperationBtns onClick={e => setData(data + e.target.value)} value="-">-</OperationBtns>
           <OperationBtns onClick={e => setData(data + e.target.value)} value="*">*</OperationBtns>
           <OperationBtns onClick={e => setData(data + e.target.value)} value="/">/</OperationBtns>
-          <OperationBtns onClick={e => {
-            setData(
-              String(eval(data))
-              
-              )
-
+          <OperationBtns onClick={() => {
+            handleEqualSign(setData, data)
           }
           
           } value="=">=</OperationBtns>
