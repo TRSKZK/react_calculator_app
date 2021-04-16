@@ -3,7 +3,6 @@ import React from "react";
 import RenderNumbers from '../numbers/numbers'
 import styled from "styled-components";
 
-
 const CalcBody = styled.div`
   padding: 10px;
   height: 100vh;
